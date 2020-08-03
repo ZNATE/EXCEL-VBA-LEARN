@@ -1,0 +1,331 @@
+Sub 合并排序3产出()
+'取值3理由
+Dim a
+Dim K
+Dim B
+'3理由
+For K1 = 1 To 3
+
+If K1 = 2 Then
+K2 = "B*"
+S1 = "事假"
+ElseIf K1 = 3 Then
+K2 = "A*"
+S1 = "B假"
+ElseIf K1 = 1 Then
+K2 = "C*"
+S1 = "公假"
+End If
+'1到40
+For K = 1 To 40
+'获取数据
+For a = 1 To 56
+A1 = Application.WorksheetFunction.CountIf(Range("B" & a & ":AO" & a), K2)
+'比较数据
+If A1 = K Then
+'组合名字
+If M = "" Then
+M = Cells(a, 1).Value
+Else: M = M & "、" & Cells(a, 1).Value
+End If
+B = B + 1
+End If
+Next
+'补充后缀
+If B > 1 Then
+If S5 = "" Then O = M & "/各" & K & "节/" & S1
+If S5 <> "" Then O = M & "/各" & K & "节/" & S1 & "," & Chr(10)
+ElseIf B <> 0 Then
+If S5 = "" Then O = M & "/" & K & "节/" & S1
+If S5 <> "" Then O = M & "/" & K & "节/" & S1 & "," & Chr(10)
+End If
+'刷新赋值
+T = O & T
+M = ""
+B = 0
+O = ""
+Next
+S5 = T & S5
+T = ""
+Next
+'MsgBox S5
+
+'三合一
+For KKK = 1 To 3
+If KKK = 1 Then KK2 = "*▲*"
+If KKK = 2 Then KK2 = "*○*"
+If KKK = 3 Then KK2 = "*●*"
+'取值CD
+For K = 1 To 40 '数字
+For a = 1 To 56 '行
+A1 = Application.WorksheetFunction.CountIf(Range("B" & a & ":AO" & a), KK2)
+If A1 = K Then '比较节数
+If M = "" Then '组合名字
+M = Cells(a, 1).Value
+Else: M = M & "、" & Cells(a, 1).Value
+End If
+B = B + 1 '同组人数
+End If
+Next
+'补充后缀
+If B > 1 Then
+If T = "" Then O = M & "/各" & K & "节"
+If T <> "" Then O = M & "/各" & K & "节" & "," & Chr(10)
+ElseIf B <> 0 Then
+If T = "" Then O = M & "/" & K & "节"
+If T <> "" Then O = M & "/" & K & "节" & "," & Chr(10)
+End If
+T = O & T '组合
+M = ""
+B = 0
+O = ""
+'变量归零
+Next
+If KKK = 1 Then
+Z = T '迟到
+T = ""
+End If
+If KKK = 2 Then
+X = T '旷课
+T = ""
+End If
+If KKK = 3 Then
+Y = T '早退
+T = ""
+End If
+Next
+
+
+'工作表名称
+A2 = ActiveSheet.Name
+'赋值取值
+B = Cells(57, 2).Value
+C = Cells(57, 10).Value
+D = Cells(57, 18).Value
+E = Cells(57, 26).Value
+F = Cells(57, 34).Value
+G = Application.WorksheetFunction.CountA(Range("A3:A56"))
+'激活工作表1
+Sheet1.Activate
+
+'查找匹配
+For K = 5 To 15
+H = Cells(K, 2).Value
+If H Like A2 Then
+
+Cells(K, 3).Value = G
+Cells(K, 4).Value = B
+Cells(K, 5).Value = C
+Cells(K, 6).Value = D
+Cells(K, 7).Value = E
+Cells(K, 8).Value = F
+Cells(K, 12).Value = S5
+Cells(K, 14).Value = Z
+Cells(K, 17).Value = X
+Cells(K, 16).Value = Y
+
+Rows(K).Select
+
+'选出最多行之数值
+Dim Q
+QQ = 0
+For KKK = 12 To 16
+AAA = Split(Cells(K, KKK), Chr(10))
+Q = UBound(AAA) + 1
+If Q > QQ Then QQ = Q
+Next
+If QQ > 2 Then Selection.RowHeight = QQ * 13 + 9
+Exit For
+End If
+Next
+
+End Sub
+Sub 百分比()
+Dim a
+Dim A1
+Dim H2
+'统计人数
+H = Application.WorksheetFunction.CountA(Range("A3:A56"))
+
+ '循环
+For K = 0 To 4
+A1 = 2 + 8 * K
+'统计取值假
+A5 = A1 + 7
+H2 = Application.WorksheetFunction.CountA(Range(Cells(3, A1), Cells(56, A5)))
+
+'公假
+A2 = Application.WorksheetFunction.CountIf(Range(Cells(3, A1), Cells(56, A5)), "C*")
+If A1 > 0 Then A3 = A3 + A2
+'C
+'
+A2 = Application.WorksheetFunction.CountIf(Range(Cells(3, A1), Cells(56, A5)), "▲*")
+If A1 > 0 Then A3 = A3 + A2
+'▲
+'减
+H2 = H2 - A3
+'取值课
+a = Cells(2, A1).Value
+  S = Len(a)
+  M = ""
+  For I = 1 To S
+  n = Mid(a, I, 1)
+  If IsNumeric(n) = True Then
+  M = M & n
+  End If
+  Next I
+If M <> "" Then
+If M = 0 Then
+Cells(57, A1).Value = "没课"
+ElseIf M > 0 Then
+T = H * M - H2
+Z = H * M
+O = T / Z
+Cells(57, A1).Value = O
+End If
+Else
+'数据写入
+Cells(57, A1).Value = "没课"
+End If
+A3 = 0
+  Next
+    Range("B57:AH57").Select
+    Selection.Style = "Percent"
+    Selection.NumberFormatLocal = "0.00%"
+'Call 数据填充
+Call 合并排序3产出
+End Sub
+Sub 统计()
+H = Application.CountA(Range("A3:A56"))
+MsgBox "非空单元格数" & H & "个."
+End Sub
+Sub 数据填充()
+Dim A2
+Dim B
+Dim C
+Dim D
+Dim E
+Dim F
+Dim G
+Dim H
+'工作表名称
+A2 = ActiveSheet.Name
+B = Cells(57, 2).Value
+C = Cells(57, 10).Value
+D = Cells(57, 18).Value
+E = Cells(57, 26).Value
+F = Cells(57, 34).Value
+G = Application.WorksheetFunction.CountA(Range("A3:A56"))
+Sheet1.Activate
+'查找匹配
+For K = 5 To 15
+H = Cells(K, 2).Value
+If H Like A2 Then
+Cells(K, 3).Value = G
+Cells(K, 4).Value = B
+Cells(K, 5).Value = C
+Cells(K, 6).Value = D
+Cells(K, 7).Value = E
+Cells(K, 8).Value = F
+End If
+Next
+End Sub
+Sub CD()
+'取值CD
+For K = 1 To 40 '数字
+For a = 1 To 56 '行
+A1 = Application.WorksheetFunction.CountIf(Range("B" & a & ":AO" & a), "*▲*")
+If A1 = K Then '比较节数
+If M = "" Then '组合名字
+M = Cells(a, 1).Value
+Else: M = M & "、" & Cells(a, 1).Value
+End If
+B = B + 1 '同组人数
+End If
+Next
+'补充后缀
+If B > 1 Then
+If T = "" Then O = M & "/各" & K & "节"
+If T <> "" Then O = M & "/各" & K & "节" & "," & Chr(10)
+ElseIf B <> 0 Then
+If T = "" Then O = M & "/" & K & "节"
+If T <> "" Then O = M & "/" & K & "节" & "," & Chr(10)
+End If
+T = O & T '组合
+M = ""
+B = 0
+O = ""
+'变量归零
+Next
+MsgBox T
+End Sub
+Sub 三合一()
+For KKK = 1 To 3
+If KKK = 1 Then KK2 = "*▲*"
+If KKK = 2 Then KK2 = "*○*"
+If KKK = 3 Then KK2 = "*●*"
+'取值CD
+For K = 1 To 40 '数字
+For a = 1 To 56 '行
+A1 = Application.WorksheetFunction.CountIf(Range("B" & a & ":AO" & a), KK2)
+If A1 = K Then '比较节数
+If M = "" Then '组合名字
+M = Cells(a, 1).Value
+Else: M = M & "、" & Cells(a, 1).Value
+End If
+B = B + 1 '同组人数
+End If
+Next
+'补充后缀
+If B > 1 Then
+If T = "" Then O = M & "/各" & K & "节"
+If T <> "" Then O = M & "/各" & K & "节" & "," & Chr(10)
+ElseIf B <> 0 Then
+If T = "" Then O = M & "/" & K & "节"
+If T <> "" Then O = M & "/" & K & "节" & "," & Chr(10)
+End If
+T = O & T '组合
+M = ""
+B = 0
+O = ""
+'变量归零
+Next
+If KKK = 1 Then
+Z = T '迟到
+T = ""
+End If
+If KKK = 2 Then
+X = T '旷课
+T = ""
+End If
+If KKK = 3 Then
+Y = T '早退
+T = ""
+End If
+Next
+
+End Sub
+Sub 粘贴()
+    Range("A1:AO56").Select
+    ActiveSheet.Paste
+End Sub
+Sub 粘贴按钮()
+'
+' 按钮
+    ActiveSheet.Buttons.Add(585.5, 212, 50.5, 146.5).Select
+    Selection.OnAction = "粘贴"
+    Selection.Characters.Text = "粘贴"
+    With Selection.Characters(Start:=1, Length:=2).Font
+        .Name = "等线"
+        .FontStyle = "常规"
+        .Size = 11
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ColorIndex = 1
+    End With
+    Range("AR20").Select
+End Sub
