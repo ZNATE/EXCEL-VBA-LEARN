@@ -1,0 +1,47 @@
+Sub 宏4()
+'
+' 宏4 宏
+'
+
+'
+    Cells.Select
+    Selection.ClearContents
+End Sub
+Sub 宏7()
+'
+' 宏7 宏
+'
+
+'
+    Range("D5:L27,F12:J19").Select
+    Range("F12").Select
+End Sub
+Sub 宏8()
+'
+' 宏8 宏
+'
+
+'
+    Range("B1:B4").Select
+    Selection.ClearContents
+    Columns("B:B").Select
+    Selection.Copy
+    Cells.Select
+    Application.CutCopyMode = False
+    Selection.Delete Shift:=xlUp
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+End Sub
+Sub 宏10()
+'
+' 宏10 宏
+'
+
+'
+    Rows("2:2").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+    
+    Rows("1:1").Select
+    Selection.ClearContents
+End Sub
