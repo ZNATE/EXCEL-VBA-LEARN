@@ -1,0 +1,46 @@
+Sub 行高()
+Dim a
+Dim B
+Dim C
+Dim D
+Dim Q
+
+'找行数
+For C1 = 5 To 100
+If Cells(C1, 1).Value Like "备注*" Then Exit For
+C2 = C2 + 1
+Next
+
+For I = 5 To C2 + 4
+a = Split(Cells(I, 12), Chr(10))
+B = Split(Cells(I, 14), Chr(10))
+C = Split(Cells(I, 16), Chr(10))
+D = Split(Cells(I, 17), Chr(10))
+Q = UBound(a) + 1
+w = UBound(B) + 1
+E = UBound(C) + 1
+r = UBound(D) + 1
+'选出最多行之数值
+If Q < w Then
+Q = w
+ElseIf Q < E Then
+Q = E
+ElseIf Q < r Then
+Q = r
+End If
+'调整行高
+If Q > 2 Then
+Rows(I).Select
+    Selection.RowHeight = Q * 13 + 9
+ElseIf Q < 3 Then
+    Range("L" & I).Select
+    Selection.Rows.AutoFit
+End If
+
+
+If Rows(I).Height < 27 Then
+    Rows(I).Select
+    Selection.RowHeight = 35
+End If
+Next
+End Sub
