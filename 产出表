@@ -1,0 +1,636 @@
+Public Sub 第一表格()
+'CALL给H7
+Call 宏7
+ Dim a
+ Dim B
+ Dim rq
+'周
+ a = InputBox("第几周考勤表", "", "19周")
+ If Len(a) = 0 Then Exit Sub
+ Cells(1, 1) = "食品系(第" & a & ")"
+'设置单元格文本
+'日期
+ B = Format(Date, "yyyy年m月d日")
+ Cells(2, 1) = "制表者：学习部 " & B
+'设置单元格文本
+'补交假条
+ rr = CSng(Date) Mod 7 '判断周几
+If rr = 6 Then
+  rq = Format(DateAdd("d", 5, Date), "m月d日") 'Format(Date, "yyyy年m月d日")制定格式
+ElseIf rr = 0 Then
+  rq = Format(DateAdd("d", 4, Date), "m月d日")
+ElseIf rr = 5 Then
+  rq = Format(DateAdd("d", 6, Date), "m月d日")
+ElseIf rr = 4 Then
+  rq = Format(DateAdd("d", 7, Date), "m月d日")
+ElseIf rr = 3 Then
+  rq = Format(DateAdd("d", 8, Date), "m月d日")
+ElseIf rr = 2 Then
+  rq = Format(DateAdd("d", 9, Date), "m月d日")
+ElseIf rr = 1 Then
+  rq = Format(DateAdd("d", 10, Date), "m月d日")
+Else
+  MsgBox ""
+End If
+Cells(XYZ + 5, 1) = "备注：请假学生中，加下划线为无假条，请及时补交假条；" & Chr(10) & "若对出勤情况有异议，请在" & rq & "前到1305办公室找学工办老师，谢谢！"
+'设置单元格文本
+ MsgBox "第" & a & "考勤表" & "/" & Chr(10) & "制表日:" & B & "/" & Chr(10) & "补交假条:" & rq & "(下周三)"
+
+End Sub
+Sub 宏7()
+ ' 行高
+    Rows("1:2").Select
+    Selection.RowHeight = 21
+    Rows("3:4").Select
+    Range("T3").Activate
+    Selection.RowHeight = 20
+    Rows("5:" & XYZ + 4).Select
+    Selection.RowHeight = 35
+    ActiveWindow.SmallScroll Down:=9
+    Rows(XYZ + 5 & ":" & XYZ + 5).Select
+    Selection.RowHeight = 47.3
+    ' 宽 宏
+    Columns("A:A").Select
+    Range("A5").Activate
+    Selection.ColumnWidth = 4.08
+    Columns("B:B").Select
+    Range("B5").Activate
+    Selection.ColumnWidth = 11.67
+    Columns("C:C").Select
+    Range("C5").Activate
+    Selection.ColumnWidth = 3.7
+    Columns("D:H").Select
+    Range("D4").Activate
+    Selection.ColumnWidth = 5.67
+    Columns("I:I").Select
+    Range("I4").Activate
+    Selection.ColumnWidth = 6.17
+    Columns("J:J").Select
+    Range("J5").Activate
+    Selection.ColumnWidth = 3.5
+    Columns("K:K").Select
+    Range("K5").Activate
+    Selection.ColumnWidth = 3.7
+    Columns("L:M").Select
+    Range("L5").Activate
+    Selection.ColumnWidth = 6.75
+    Columns("N:N").Select
+    Range("N5").Activate
+    Selection.ColumnWidth = 12.33
+    Columns("O:O").Select
+    Range("O5").Activate
+    Selection.ColumnWidth = 0
+    Columns("P:P").Select
+    Range("P5").Activate
+    Selection.ColumnWidth = 12.33
+    Columns("Q:Q").Select
+    Range("Q5").Activate
+    Selection.ColumnWidth = 12.33
+    Columns("R:R").Select
+    Range("R5").Activate
+    Selection.ColumnWidth = 0
+    Columns("S:S").Select
+    Range("S5").Activate
+    Selection.ColumnWidth = 4.16
+ '前二
+    Range("A1:S1").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("A2:S2").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+' 周
+    Range("D3:I3").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+' 名单合并居中
+    Range("L3:M4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("N3:O4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("Q3:R4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+
+' 下方备注
+
+    Range("A" & XYZ + 5 & ":S" & XYZ + 5).Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+'其他
+        Range("A3:A4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("B3:B4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("C3:C4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("J3:J4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("K3:K4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Range("P3:P4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    ActiveWindow.SmallScroll Down:=-6
+    Range("S3:S4").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+' 宏7 宏
+'常规数据载入
+    Range("A3:A4").Select
+    ActiveCell.FormulaR1C1 = "序号"
+    Range("B3:B4").Select
+    ActiveCell.FormulaR1C1 = "班级"
+    Range("B3:B4").Select
+    ActiveCell.FormulaR1C1 = "班级"
+    Range("C3:C4").Select
+    ActiveCell.FormulaR1C1 = "班总人数"
+    Range("D3:I3").Select
+    ActiveCell.FormulaR1C1 = "出  勤"
+    With ActiveCell.Characters(Start:=1, Length:=1).Font
+        .Name = "宋体"
+        .FontStyle = "常规"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ColorIndex = xlAutomatic
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontNone
+    End With
+    With ActiveCell.Characters(Start:=2, Length:=2).Font
+        .Name = "Arial"
+        .FontStyle = "常规"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ColorIndex = xlAutomatic
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontNone
+    End With
+    With ActiveCell.Characters(Start:=4, Length:=1).Font
+        .Name = "宋体"
+        .FontStyle = "常规"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ColorIndex = xlAutomatic
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontNone
+    End With
+    Range("D3:I3").Select
+    ActiveCell.FormulaR1C1 = "出  勤"
+    Range("D4").Select
+    ActiveCell.FormulaR1C1 = "周一"
+    Range("E4").Select
+    ActiveCell.FormulaR1C1 = "周二"
+    Range("F4").Select
+    ActiveCell.FormulaR1C1 = "周三"
+    Range("G4").Select
+    ActiveCell.FormulaR1C1 = "周四"
+    Range("H4").Select
+    ActiveCell.FormulaR1C1 = "周五"
+
+    Range("I4").Select
+    ActiveCell.FormulaR1C1 = "班平均率"
+
+    Range("J3:J4").Select
+    ActiveCell.FormulaR1C1 = "排名"
+
+    Range("K3:K4").Select
+    ActiveCell.FormulaR1C1 = "与上一周相比"
+
+    Range("L3:M4").Select
+    ActiveCell.FormulaR1C1 = "请假学生名单/节数" & Chr(10) & "/事由"
+
+    Range("N3:O4").Select
+    ActiveCell.FormulaR1C1 = "迟到学生名单/" & Chr(10) & "节数"
+
+    Range("P3:P4").Select
+    ActiveCell.FormulaR1C1 = "早退学生名单/" & Chr(10) & "节数"
+
+    Range("Q3:R4").Select
+    ActiveCell.FormulaR1C1 = "旷课学生名单/" & Chr(10) & "节数"
+
+    Range("S3:S4").Select
+    ActiveCell.FormulaR1C1 = "备注"
+    Range("T4").Select
+
+    Range("A5").Select
+    ActiveCell.FormulaR1C1 = "1"
+    Range("A6").Select
+    ActiveCell.FormulaR1C1 = "2"
+    Range("A5:A6").Select
+    Selection.AutoFill Destination:=Range("A5:A" & XYZ + 4), Type:=xlFillDefault
+' 所有框线
+    Range("A1:S" & XYZ + 5).Select
+    Selection.Borders(xlDiagonalDown).LineStyle = xlNone
+    Selection.Borders(xlDiagonalUp).LineStyle = xlNone
+    With Selection.Borders(xlEdgeLeft)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeTop)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeBottom)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlEdgeRight)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideVertical)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+    With Selection.Borders(xlInsideHorizontal)
+        .LineStyle = xlContinuous
+        .ColorIndex = 0
+        .TintAndShade = 0
+        .Weight = xlThin
+    End With
+' 合并居中
+    Range("A1:S" & XYZ + 5).Select
+    With Selection
+        .HorizontalAlignment = xlGeneral
+        .VerticalAlignment = xlCenter
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = False
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    Range("A2:S2").Select
+    With Selection
+        .HorizontalAlignment = xlRight
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = True
+    End With
+    Range("L5:M5").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+        .MergeCells = False
+    End With
+    Selection.Merge
+    Selection.AutoFill Destination:=Range("L5:M" & XYZ + 4), Type:=xlFillDefault
+    Range("L5:M" & XYZ + 4).Select
+' 每一个单元格字体大小
+    Range("L3:S" & XYZ + 4 & ",K3:K4,J3:J4,D3:I3,C3:C4,B3:B4,B5:B" & XYZ + 4 & ",A5:A" & XYZ + 4).Select
+    Range("A5").Activate
+    With Selection.Font
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .TintAndShade = 0
+    End With
+    Range("L3:S" & XYZ + 4 & ",K3:K4,J3:J4,D3:I3,C3:C4,B3:B4,B5:B" & XYZ + 4 & ",A5:A" & XYZ + 4 & ",C5:C" & XYZ + 4).Select
+    Range("C5").Activate
+    With Selection.Font
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .TintAndShade = 0
+    End With
+    Range("D4,D4:I4,D5:K" & XYZ + 4).Select
+    Range("D5").Activate
+    With Selection.Font
+        .Name = "等线"
+        .Size = 9
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("A3:A4").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 11
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("A2:S2,A1:S1").Select
+    Range("A1").Activate
+    With Selection.Font
+        .Name = "等线"
+        .Size = 16
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("A" & XYZ + 5 & ":S" & XYZ + 5).Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 18
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    ' 字体颜色 宏
+    Range("L5:M" & XYZ + 4).Select
+    Selection.Font.Underline = xlUnderlineStyleSingle
+    Range("N5:Q" & XYZ + 4).Select
+    With Selection.Font
+        .Color = -16776961
+        .TintAndShade = 0
+    End With
+'格式载入
+Call 宏15
+End Sub
+Sub 宏15()
+' 百分比
+Range("D5").Select
+    Selection.Style = "Percent"
+    Selection.NumberFormatLocal = "0.00%"
+    Selection.AutoFill Destination:=Range("D5:I5"), Type:=xlFillDefault
+    Range("D5:I5").Select
+    Selection.AutoFill Destination:=Range("D5:I" & XYZ + 4), Type:=xlFillDefault
+    Range("D5:I15").Select
+' 班平均率 排名
+Range("I5").Select
+    ActiveCell.FormulaR1C1 = "=AVERAGE(RC[-5]:RC[-1])"
+Range("J5").Select
+    ActiveCell.FormulaR1C1 = "=RANK(RC[-1],R5C[-1]:R15C[-1])"
+    Range("I5:J5").Select
+    Selection.AutoFill Destination:=Range("I5:J" & XYZ + 4), Type:=xlFillDefault
+    Range("I5:J" & XYZ + 4).Select
+
+End Sub
+Sub 按排名排序第一个()
+Dim a
+Dim B
+'启动时排名列应有数值
+a = Cells(5, 10)
+B = Cells(6, 10)
+For C1 = 5 To 100
+If Cells(C1, 1).Value Like "备注*" Then Exit For
+C = C + 1
+Next
+For a = 1 To C '班级数
+ For B = 5 To C + 3
+  If Cells(B, 10) > Cells(B + 1, 10) Then
+  '交换
+   Rows(B + 1).Select
+   Selection.Cut
+    Rows(B).Select
+    Selection.Insert Shift:=xlDown
+  End If
+ Next
+Next
+End Sub
+Sub ABC()
+MsgBox Cells(8, 1).Value
+End Sub
+Sub 绝对值排名上升()
+Dim a As String
+For I = 5 To 15
+a = Cells(I, 10).Value - Cells(I, 11).Value
+If a > 0 Then Cells(I, 11).Value = "↓" & Abs(a)
+If a = 0 Then Cells(I, 11).Value = "不变"
+If a < 0 Then Cells(I, 11).Value = "↑" & Abs(a)
+Next
+End Sub
