@@ -1,0 +1,267 @@
+Sub 按钮启动()
+'
+' 按钮
+    ActiveSheet.Buttons.Add(592, 27, 53, 155.5).Select
+    Selection.OnAction = "百分比"
+    Selection.Characters.Text = "输出"
+    With Selection.Characters(Start:=1, Length:=2).Font
+        .Name = "等线"
+        .FontStyle = "常规"
+        .Size = 11
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ColorIndex = 1
+    End With
+    Range("AT8").Select
+End Sub
+Sub 新建()
+'
+' 新建 宏
+'
+
+'
+End Sub
+Sub 格式()
+'
+' 格式 宏
+'
+
+'
+    Range("A5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("B5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("C5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("D5:I5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 9
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("J5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 9
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("K5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 9
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("L5:M5").Select
+    Selection.Font.Underline = xlUnderlineStyleNone
+    Selection.Font.Underline = xlUnderlineStyleSingle
+    With Selection.Font
+        .Name = "等线"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleSingle
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    Range("N5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .Color = -16776961
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    With Selection.Font
+        .Color = -16776961
+        .TintAndShade = 0
+    End With
+    Range("P5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .Color = -16776961
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    With Selection.Font
+        .Color = -16776961
+        .TintAndShade = 0
+    End With
+    Range("Q5").Select
+    With Selection.Font
+        .Name = "等线"
+        .Size = 10
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .Color = -16776961
+        .TintAndShade = 0
+        .ThemeFont = xlThemeFontMinor
+    End With
+    With Selection.Font
+        .Color = -16776961
+        .TintAndShade = 0
+    End With
+    Range("A5:Q5").Select
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    With Selection
+        .HorizontalAlignment = xlGeneral
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    With Selection
+        .HorizontalAlignment = xlCenter
+        .VerticalAlignment = xlCenter
+        .WrapText = True
+        .Orientation = 0
+        .AddIndent = False
+        .IndentLevel = 0
+        .ShrinkToFit = False
+        .ReadingOrder = xlContext
+    End With
+    Selection.AutoFill Destination:=Range("A5:Q6"), Type:=xlFillFormats
+    Range("A5:Q6").Select
+End Sub
+Sub 宏16()
+'
+' 宏16 宏
+'
+
+'
+    Range("B5:B" & XYZ + 4).Select
+    With Selection.Font
+        .ThemeColor = xlThemeColorLight1
+        .TintAndShade = 0
+    End With
+End Sub
+Sub 宏17()
+'
+' 宏17 宏
+'
+
+'
+   ' Range("A1:AO40").Select
+    'Selection.Copy
+    'Sheets("ASD").Select
+    'ActiveWindow.SmallScroll Down:=-51
+    Range("A1:AO56").Select
+    ActiveSheet.Paste
+    'ActiveWindow.SmallScroll Down:=18
+End Sub
+Sub 粘贴1()
+'
+' 按钮
+    ActiveSheet.Buttons.Add(585.5, 212, 50.5, 146.5).Select
+    Selection.OnAction = "粘贴"
+    Selection.Characters.Text = "粘贴"
+    With Selection.Characters(Start:=1, Length:=2).Font
+        .Name = "等线"
+        .FontStyle = "常规"
+        .Size = 11
+        .Strikethrough = False
+        .Superscript = False
+        .Subscript = False
+        .OutlineFont = False
+        .Shadow = False
+        .Underline = xlUnderlineStyleNone
+        .ColorIndex = 1
+    End With
+    Range("AR20").Select
+End Sub
