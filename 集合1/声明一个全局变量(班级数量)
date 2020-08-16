@@ -1,0 +1,2 @@
+Option Explicit
+Public XYZ As String '这是一个全局变量
